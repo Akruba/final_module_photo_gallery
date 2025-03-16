@@ -1,0 +1,92 @@
+/* Default Mobile-First Styles */
+html {
+    /* Smooth scrolling by default */
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Headings */
+  h1 {
+    text-align: center;
+    font-size: 1.95em;
+  }
+  
+  /* Grid container for images */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  /* Figure and image default styling */
+  .grid figure {
+    margin: 0;
+  }
+  
+  .grid figure img {
+    border: 5px solid blue;
+    border-radius: 0; /* No border radius for mobile */
+    width: 100%;
+    display: block;
+  }
+  
+  .grid figure figcaption {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  /* Tablet View: Two-column grid, circular images, last figure spans two columns */
+  @media (min-width: 772px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .grid figure img {
+      border-radius: 50%; /* Circular shape */
+    }
+    .grid figure:last-of-type {
+      grid-column: span 2;
+    }
+  }
+  
+  /* Large Screen, every third figure spans two columns, remove border radius */
+  @media (min-width: 992px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .grid figure:nth-child(3n) {
+      grid-column: span 2;
+    }
+    .grid figure img {
+      border-radius: 0; /* Remove shape circular */
+    }
+  }
+  
+  /* Prefers Reduced Motio, disable smooth scroll */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  
+  /* Dark Color, adjust figures for high contrast accessibility */
+  @media (prefers-color-scheme: dark) {
+    .grid figure {
+      background-color: #333; /* Dark background */
+      color: #ffeb3b; 
+    }
+    .grid figure img {
+      border-color: black;
+    }
+    body {
+      background-color: #222;
+      color: #fff;
+    }
+  }
+  
